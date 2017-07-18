@@ -1,3 +1,107 @@
+## 0.34.0 - 6 Jul 2017
+
+- serial:
+  - allow to pass any option that you can use in serialport
+  - avoid clearing buffer if it's already cleared
+
+## 0.33.0 - 4 Jul 2017
+
+- transport:
+  - pass options also to transport to be able to set options there
+- serial:
+  - adds maxDataInterval (in ms) between received data blocks
+
+## 0.32.0 - 4 Jul 2017
+
+- serial:
+  - allow option crc=false to be able to send raw data
+  - fixes dropping data with less than 4 bytes
+
+## 0.31.0 - 4 Jul 2017
+
+- serial:
+  - allow to pass lock option
+
+## 0.30.0 - 4 Jul 2017
+
+- tcp:
+  - handle packages concatenated in one data event
+
+## 0.29.0 - 4 Jul 2017
+
+- tcp:
+  - fixes previous commit not properly handling exceptions as it should
+
+## 0.28.0 - 4 Jul 2017
+
+- tcp:
+  - fixes callbacks not working for exception responses
+
+## 0.27.0 - 3 Jul 2017
+
+- transport:
+  - adds support for a mutex
+
+## 0.26.0 - 3 Jul 2017
+
+- transport:
+  - exposes `close` event
+- readme:
+  - adds events section
+
+## 0.25.0 - 30 Jun 2017
+
+- transport:
+  - propagate error event from stream (#4)
+  - store closed state and avoid send data to a closed stream (#4)
+
+## 0.24.0 - 27 Jun 2017
+
+- tcp:
+  - ensure tcp properly splits packages that come together
+- test:
+  - adds quirk tests, fixes double callback invocation
+- deps:
+  - modbus-pdu@1.11.0
+
+## 0.23.0 - 26 Jun 2017
+
+- transport:
+  - fixes tcp not clearing before new retries
+
+## 0.22.0 - 26 Jun 2017
+
+- deps:
+  - modbus-pdu@1.10.0
+
+## 0.21.0 - 26 Jun 2017
+
+- transport:
+  - tcp callback now matches transaction+unit+fcode
+  - fixes utf8 non visible whitespace
+
+## 0.20.0 - 23 Jun 2017
+
+- deps:
+  - modbus-pdu@1.9.0
+
+## 0.19.0 - 22 Jun 2017
+
+- stream:
+  - adds option debuginvert to invert the arrows in incoming/outgoing debug lines
+  - adds option debugdate that when passed false will not print date in debug lines
+- transport:
+  - fixes replies with unknown function codes
+- deps:
+  - modbus-pdu@1.8.4
+
+## 0.18.0 - 20 Jun 2017
+
+- udp:
+  - initial support
+- test:
+  - adds node v5, disable node v8 for now, adds node_modules to cache
+
 ## 0.17.0 - 14 Jun 2017
 
 - transport:

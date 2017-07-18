@@ -1,11 +1,11 @@
 ## Modbus Stream
 
-[![Build Status](https://secure.travis-ci.org/dresende/node-modbus-stream.png?branch=master)](http://travis-ci.org/dresende/node-modbus-stream)
+[![Build Status](https://secure.travis-ci.org/node-modbus/stream.png?branch=master)](http://travis-ci.org/node-modbus/stream)
 [![Package Version](https://badge.fury.io/js/modbus-stream.svg)](https://npmjs.org/package/modbus-stream)
-[![Dependency Status](https://gemnasium.com/badges/github.com/dresende/node-modbus-stream.svg)](https://gemnasium.com/github.com/dresende/node-modbus-stream)
+[![Dependency Status](https://gemnasium.com/badges/github.com/node-modbus/stream.svg)](https://gemnasium.com/github.com/node-modbus/stream)
 
 
-This is a NodeJS module to help you process modbus data. It uses [modbus-pdu](https://github.com/dresende/node-modbus-pdu) to build the core PDU and then uses transports to extend the rest.
+This is a NodeJS module to help you process modbus data. It uses [pdu](https://github.com/node-modbus/pdu) to build the core PDU and then uses transports to extend the rest.
 
 ### Features
 
@@ -17,8 +17,8 @@ This is a NodeJS module to help you process modbus data. It uses [modbus-pdu](ht
     - [x] ASCII
 - [x] Support drivers
     - [x] TCP
-    - [ ] UDP
-    - [x] Serial port (RS232, RS485)
+    - [x] UDP
+    - [x] Serial (RS232, RS485)
 
 ### Example
 
@@ -33,7 +33,7 @@ modbus.tcp.server({ debug: "server" }, (connection) => {
     });
 }).listen(12345, () => {
     modbus.tcp.connect(12345, { debug: "client" }, (err, connection) => {
-        connection.events.on("read-coils", (package, reply) => {
+        connection.on("read-coils", (request, reply) => {
             reply(null, [ 1, 0, 1, 0, 1, 1, 0, 1 ]);
         });
     });
@@ -149,3 +149,18 @@ modbus.serial.connect("/dev/ttyS123", {
     })
 });
 ```
+
+### Events
+
+There are events propagated from the transports up to the stream. You should bind some event listener
+just in case the connection or serial device errors or just closes. Remember that in NodeJS, an emitted
+error event without a listener will cause the process to throw an `uncaughtException`.
+
+#### Transport Closed (`close`)
+
+This event is emitted when the `serialport` module emits a `close` event or when a socket emits an
+`end` event.
+
+#### Transport Error (`error`)
+
+This event if something happens to the underlying stream, like a `ECONNRESET` or something similar.
