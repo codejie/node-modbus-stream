@@ -1,3 +1,37 @@
+## 0.39.0 - 27 Oct 2017
+
+- transport:
+  - expose `stream` in events
+
+## 0.38.0 - 19 Sep 2017
+
+- tcp:
+  - add a connection timeout option, `connectTimeout` (default=10s) (@jhillacre)
+- ci:
+  -  drop node 0.x, adds v8 (I still make efforts to it works on 0.x)
+
+## 0.37.0 - 15 Sep 2017
+
+- transport:
+  - serial:
+    - allow default slaveId to be passed in constructor
+  - tcp:
+    - allow default unitId to be passed in constructor (fixes #8)
+- deps:
+  - mocha@3.5.3
+
+## 0.36.0 - 21 Jul 2017
+
+- tcp: fixes #7
+
+## 0.35.0 - 20 Jul 2017
+
+- transport:
+  - allow multiple retry timers, allowing tcp to requests to go simultaneously (#6)
+- test:
+  - change quirks to split each transport and avoid confusion
+  - avoids using reserved word `package` (fixes #5)
+
 ## 0.34.0 - 6 Jul 2017
 
 - serial:

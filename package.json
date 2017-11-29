@@ -1,6 +1,6 @@
 {
 	"name"         : "modbus-stream",
-	"version"      : "0.34.0",
+	"version"      : "0.39.0",
 	"author"       : "Diogo Resende <dresende@thinkdigital.pt>",
 	"repository"   : "https://github.com/node-modbus/stream",
 	"license"      : "MIT",
@@ -12,6 +12,6 @@
 		"serialport" : ">=1.7.1"
 	},
 	"devDependencies" : {
-		"mocha"     : "3.4.2"
+		"mocha"     : "3.5.3"
 	}
 }
